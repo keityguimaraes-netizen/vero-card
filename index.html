@@ -52,15 +52,15 @@ body{background:#E8E1E3;font-family:'Inter',sans-serif;display:flex;justify-cont
 .bar-marker-label{position:absolute;top:-22px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--ink-soft);transform:translateX(-50%);}
 .bar-caption{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);white-space:nowrap;}
 .dealers{display:flex;flex-direction:column;gap:10px;}
-.dealer{display:grid;grid-template-columns:1.3fr 0.65fr 0.65fr 0.75fr 0.75fr 0.75fr 0.65fr 40px;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 16px;}
+.dealer{display:grid;grid-template-columns:1.15fr 0.6fr 0.68fr 0.58fr 0.68fr 0.68fr 0.68fr 0.58fr 36px;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 14px;}
 .dealer-link{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;background:var(--tint);color:var(--pink-dark);text-decoration:none;font-size:16px;font-weight:700;justify-self:center;transition:background 0.15s, color 0.15s;}
 .dealer-link:hover{background:var(--pink);color:#fff;}
-.dealer-name{font-size:14.5px;font-weight:600;color:var(--ink);}
+.dealer-name{font-size:13.5px;font-weight:600;color:var(--ink);}
 .dealer-name span{display:block;font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:10.5px;color:var(--ink-soft);margin-top:2px;}
 .dealer-metric{text-align:right;}
-.dealer-metric-value{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:15px;color:var(--ink);}
-.dealer-metric-label{font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--ink-soft);letter-spacing:0.04em;text-transform:uppercase;margin-top:2px;}
-.pill{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;padding:5px 10px;border-radius:20px;}
+.dealer-metric-value{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:13px;color:var(--ink);}
+.dealer-metric-label{font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:var(--ink-soft);letter-spacing:0.03em;text-transform:uppercase;margin-top:2px;}
+.pill{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;padding:4px 8px;border-radius:20px;}
 .pill-pos{background:var(--pos-tint);color:var(--pos);}
 .pill-neu{background:var(--tint);color:var(--pink-dark);}
 .pill-att{background:var(--att-tint);color:var(--att);}
@@ -70,9 +70,9 @@ body{background:#E8E1E3;font-family:'Inter',sans-serif;display:flex;justify-cont
 .total-left{display:flex;align-items:center;gap:14px;position:relative;z-index:1;}
 .total-badge{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;color:#fff;background:var(--pink);border-radius:10px;padding:8px 12px;letter-spacing:0.02em;}
 .total-caption{font-family:'IBM Plex Mono',monospace;font-size:12px;color:#D9A8B8;}
-.total-numbers{display:flex;gap:26px;position:relative;z-index:1;}
+.total-numbers{display:flex;gap:20px;position:relative;z-index:1;}
 .total-num{text-align:right;}
-.total-num-value{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:24px;color:#fff;}
+.total-num-value{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:21px;color:#fff;}
 .total-num-label{font-family:'IBM Plex Mono',monospace;font-size:10px;color:#C98FA3;text-transform:uppercase;letter-spacing:0.06em;margin-top:2px;}
 .footer{padding:24px 64px 40px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line);position:relative;overflow:hidden;}
 .footer-blob-claro{position:absolute;width:70px;height:70px;border-radius:50%;background:var(--tint);left:-25px;bottom:-35px;z-index:0;}
@@ -139,6 +139,11 @@ body{background:#E8E1E3;font-family:'Inter',sans-serif;display:flex;justify-cont
       <div class="summary-label">Cancelamento comercial</div>
       <div class="summary-value">5,78%</div>
       <div class="summary-sub">125 cancelamentos</div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-label">Ticket médio</div>
+      <div class="summary-value">R$ 129,90</div>
+      <div class="summary-sub">consolidado, ponderado por instaladas</div>
     </div>
   </div>
   
@@ -211,6 +216,7 @@ body{background:#E8E1E3;font-family:'Inter',sans-serif;display:flex;justify-cont
         <div class="dealer">
           <div class="dealer-name">WEBDEALER LOGMAIS<span>Meta 1.550</span></div>
           <div class="dealer-metric"><div class="dealer-metric-value">1.023</div><div class="dealer-metric-label">vendas instaladas</div></div>
+          <div class="dealer-metric"><div class="dealer-metric-value">R$ 130,37</div><div class="dealer-metric-label">ticket médio</div></div>
           <div class="dealer-metric"><div class="dealer-metric-value">62,00</div><div class="dealer-metric-label">média DU</div></div>
           <div class="dealer-metric"><span class="pill pill-pos">100,00%</span><div class="dealer-metric-label">projeção</div></div>
           <div class="dealer-metric"><span class="pill pill-att">30,99%</span><div class="dealer-metric-label">crm instal</div></div>
@@ -222,6 +228,7 @@ body{background:#E8E1E3;font-family:'Inter',sans-serif;display:flex;justify-cont
         <div class="dealer">
           <div class="dealer-name">WEBDEALER CONECTAMAIS LP<span>Meta 300</span></div>
           <div class="dealer-metric"><div class="dealer-metric-value">300</div><div class="dealer-metric-label">vendas instaladas</div></div>
+          <div class="dealer-metric"><div class="dealer-metric-value">R$ 123,24</div><div class="dealer-metric-label">ticket médio</div></div>
           <div class="dealer-metric"><div class="dealer-metric-value">18,18</div><div class="dealer-metric-label">média DU</div></div>
           <div class="dealer-metric"><span class="pill pill-pos">151,52%</span><div class="dealer-metric-label">projeção</div></div>
           <div class="dealer-metric"><span class="pill pill-att">1,67%</span><div class="dealer-metric-label">crm instal</div></div>
@@ -233,6 +240,7 @@ body{background:#E8E1E3;font-family:'Inter',sans-serif;display:flex;justify-cont
         <div class="dealer">
           <div class="dealer-name">WEBDEALER CORP<span>Meta 275</span></div>
           <div class="dealer-metric"><div class="dealer-metric-value">171</div><div class="dealer-metric-label">vendas instaladas</div></div>
+          <div class="dealer-metric"><div class="dealer-metric-value">R$ 134,79</div><div class="dealer-metric-label">ticket médio</div></div>
           <div class="dealer-metric"><div class="dealer-metric-value">10,36</div><div class="dealer-metric-label">média DU</div></div>
           <div class="dealer-metric"><span class="pill pill-neu">94,21%</span><div class="dealer-metric-label">projeção</div></div>
           <div class="dealer-metric"><span class="pill pill-att">7,02%</span><div class="dealer-metric-label">crm instal</div></div>
@@ -267,6 +275,7 @@ body{background:#E8E1E3;font-family:'Inter',sans-serif;display:flex;justify-cont
         <div class="dealer">
           <div class="dealer-name">MIDIA SIMPLES<span>Meta 596</span></div>
           <div class="dealer-metric"><div class="dealer-metric-value">361</div><div class="dealer-metric-label">vendas instaladas</div></div>
+          <div class="dealer-metric"><div class="dealer-metric-value">R$ 132,35</div><div class="dealer-metric-label">ticket médio</div></div>
           <div class="dealer-metric"><div class="dealer-metric-value">21,88</div><div class="dealer-metric-label">média DU</div></div>
           <div class="dealer-metric"><span class="pill pill-neu">91,77%</span><div class="dealer-metric-label">projeção</div></div>
           <div class="dealer-metric"><span class="pill pill-att">20,22%</span><div class="dealer-metric-label">crm instal</div></div>
@@ -278,6 +287,7 @@ body{background:#E8E1E3;font-family:'Inter',sans-serif;display:flex;justify-cont
         <div class="dealer">
           <div class="dealer-name">WEBDEALER MUNDIALE TEC<span>Meta 125</span></div>
           <div class="dealer-metric"><div class="dealer-metric-value">32</div><div class="dealer-metric-label">vendas instaladas</div></div>
+          <div class="dealer-metric"><div class="dealer-metric-value">R$ 123,24</div><div class="dealer-metric-label">ticket médio</div></div>
           <div class="dealer-metric"><div class="dealer-metric-value">1,94</div><div class="dealer-metric-label">média DU</div></div>
           <div class="dealer-metric"><span class="pill pill-att">38,79%</span><div class="dealer-metric-label">projeção</div></div>
           <div class="dealer-metric"><span class="pill pill-neu">—</span><div class="dealer-metric-label">crm instal</div></div>
@@ -303,6 +313,7 @@ body{background:#E8E1E3;font-family:'Inter',sans-serif;display:flex;justify-cont
       <div class="total-num"><div class="total-num-value" style="color:#FF7EA0">100,46%</div><div class="total-num-label">projeção</div></div>
       <div class="total-num"><div class="total-num-value">51,04%</div><div class="total-num-label">recorrência</div></div>
       <div class="total-num"><div class="total-num-value">5,78%</div><div class="total-num-label">cancelamento</div></div>
+      <div class="total-num"><div class="total-num-value">R$ 129,90</div><div class="total-num-label">ticket médio</div></div>
     </div>
   </div>
 
@@ -315,7 +326,7 @@ body{background:#E8E1E3;font-family:'Inter',sans-serif;display:flex;justify-cont
     </div>
     <a class="footer-download" href="Dados_Analitico_Vendas.xlsx" download>⬇ Baixar base de dados</a>
     <div class="footer-right">
-      Gerado automaticamente em 22/07/2026 às 09:16 · dados parciais
+      Gerado automaticamente em 22/07/2026 às 11:31 · dados parciais
       <div class="footer-views">👁 <span id="contador-acessos">···</span> visualizações</div>
     </div>
   </div>
