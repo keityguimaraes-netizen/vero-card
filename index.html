@@ -102,13 +102,19 @@ body{background:#E8E1E3;font-family:'Inter',sans-serif;display:flex;justify-cont
 .plano-pct{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-soft);margin-top:4px;}
 
 .regioes-section{padding-top:8px;}
-.regioes-resumo{display:flex;align-items:center;gap:12px;margin-top:16px;margin-bottom:14px;}
+.regioes-resumo{display:flex;align-items:center;gap:20px;margin-top:16px;margin-bottom:14px;flex-wrap:wrap;}
+.regioes-resumo-destaque{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:30px;color:var(--pink-dark);display:flex;align-items:baseline;gap:8px;}
+.regioes-resumo-destaque-label{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.04em;}
+.regioes-resumo-secundario{display:flex;align-items:center;gap:10px;}
 .regiao-pill{font-size:14px;padding:6px 12px;}
+.regiao-pill-sm{font-size:11.5px;padding:4px 9px;}
 .regiao-caption{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-soft);}
 .regioes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;}
 .regiao-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px;}
-.regiao-nome{font-family:'Fredoka',sans-serif;font-weight:600;font-size:15px;color:var(--ink);margin-bottom:10px;}
-.regiao-pct-row{display:flex;flex-direction:column;align-items:flex-start;gap:6px;margin-bottom:12px;}
+.regiao-nome{font-family:'Fredoka',sans-serif;font-weight:600;font-size:15px;color:var(--ink);margin-bottom:8px;}
+.regiao-du-destaque{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:26px;color:var(--pink-dark);}
+.regiao-du-label{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:10px;}
+.regiao-secundario{display:flex;flex-direction:column;align-items:flex-start;gap:5px;margin-bottom:12px;}
 .regiao-bar-track{height:10px;}
 .regiao-bar-track .bar-marker{height:18px;top:-4px;}
 </style>
@@ -205,63 +211,69 @@ body{background:#E8E1E3;font-family:'Inter',sans-serif;display:flex;justify-cont
   <div class="top-planos regioes-section">
     <div class="section-intro">
       <div class="section-title">Forecast × Realizado por região</div>
-      <div class="section-note">% DE ATINGIMENTO ATÉ A DATA · MARCADOR EM 100%</div>
+      <div class="section-note">MÉDIA POR DIA ÚTIL · % SOBRE O FORECAST DO MÊS</div>
     </div>
     <div class="regioes-resumo">
-      <span class="pill pill-neu regiao-pill">72,45%</span>
-      <span class="regiao-caption">consolidado geral · 234 / 323,00 forecast até a data</span>
-      <span class="regiao-caption">média DU: 93,60</span>
+      <div class="regioes-resumo-destaque">93,60<span class="regioes-resumo-destaque-label">média DU consolidada</span></div>
+      <div class="regioes-resumo-secundario">
+        <span class="pill pill-att regiao-pill-sm">8,63%</span>
+        <span class="regiao-caption">consolidado geral · 234 / 2.713,00 forecast do mês</span>
+      </div>
     </div>
     <div class="regioes-grid">
       
         <div class="regiao-card">
           <div class="regiao-nome">Centro-Oeste</div>
-          <div class="regiao-pct-row">
-            <span class="pill pill-neu regiao-pill">73,68%</span>
-            <span class="regiao-caption">42 / 57,00 forecast até a data</span>
-            <span class="regiao-caption">média DU: 16,80</span>
+          <div class="regiao-du-destaque">16,80</div>
+          <div class="regiao-du-label">média por dia útil</div>
+          <div class="regiao-secundario">
+            <span class="pill pill-att regiao-pill-sm">8,77%</span>
+            <span class="regiao-caption">42 / 479,00 forecast do mês</span>
           </div>
           <div class="bar-track regiao-bar-track">
-            <div class="bar-fill" style="width:49.1%"></div>
+            <div class="bar-fill" style="width:5.8%"></div>
             <div class="bar-marker" style="left:66.7%"></div>
           </div>
         </div>
 
         <div class="regiao-card">
           <div class="regiao-nome">Minas Gerais</div>
-          <div class="regiao-pct-row">
-            <span class="pill pill-neu regiao-pill">61,96%</span>
-            <span class="regiao-caption">57 / 92,00 forecast até a data</span>
-            <span class="regiao-caption">média DU: 22,80</span>
+          <div class="regiao-du-destaque">22,80</div>
+          <div class="regiao-du-label">média por dia útil</div>
+          <div class="regiao-secundario">
+            <span class="pill pill-att regiao-pill-sm">7,35%</span>
+            <span class="regiao-caption">57 / 776,00 forecast do mês</span>
           </div>
           <div class="bar-track regiao-bar-track">
-            <div class="bar-fill" style="width:41.3%"></div>
+            <div class="bar-fill" style="width:4.9%"></div>
             <div class="bar-marker" style="left:66.7%"></div>
           </div>
         </div>
 
         <div class="regiao-card">
           <div class="regiao-nome">São Paulo</div>
-          <div class="regiao-pct-row">
-            <span class="pill pill-att regiao-pill">50,00%</span>
-            <span class="regiao-caption">36 / 72,00 forecast até a data</span>
-            <span class="regiao-caption">média DU: 14,40</span>
+          <div class="regiao-du-destaque">14,40</div>
+          <div class="regiao-du-label">média por dia útil</div>
+          <div class="regiao-secundario">
+            <span class="pill pill-att regiao-pill-sm">6,02%</span>
+            <span class="regiao-caption">36 / 598,00 forecast do mês</span>
           </div>
           <div class="bar-track regiao-bar-track">
-            <div class="bar-fill" style="width:33.3%"></div>
+            <div class="bar-fill" style="width:4.0%"></div>
             <div class="bar-marker" style="left:66.7%"></div>
           </div>
         </div>
 
         <div class="regiao-card">
           <div class="regiao-nome">Sul</div>
-          <div class="regiao-pct-row">
-            <span class="pill pill-neu regiao-pill">97,06%</span>
-            <span class="regiao-caption">99 / 102,00 forecast até a data</span>
-            <span class="regiao-caption">média DU: 39,60</span>
+          <div class="regiao-du-destaque">39,60</div>
+          <div class="regiao-du-label">média por dia útil</div>
+          <div class="regiao-secundario">
+            <span class="pill pill-att regiao-pill-sm">11,51%</span>
+            <span class="regiao-caption">99 / 860,00 forecast do mês</span>
           </div>
           <div class="bar-track regiao-bar-track">
-            <div class="bar-fill" style="width:64.7%"></div>
+            <div class="bar-fill" style="width:7.7%"></div>
             <div class="bar-marker" style="left:66.7%"></div>
           </div>
         </div>
@@ -407,7 +419,7 @@ body{background:#E8E1E3;font-family:'Inter',sans-serif;display:flex;justify-cont
     </div>
     <a class="footer-download" href="Dados_Analitico_Vendas.xlsx" download>⬇ Baixar base de dados</a>
     <div class="footer-right">
-      Gerado automaticamente em 05/08/2026 às 09:38 · dados parciais
+      Gerado automaticamente em 05/08/2026 às 16:47 · dados parciais
       <div class="footer-views">👁 <span id="contador-acessos">···</span> visualizações</div>
     </div>
   </div>
