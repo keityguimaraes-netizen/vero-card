@@ -137,12 +137,12 @@ body{background:#E8E1E3;font-family:'Inter',sans-serif;display:flex;justify-cont
     <div class="subline">Resultados parciais de instalação e projeção de entrega por gestor e parceiro webdealer.</div>
   </div>
 
-  <div class="summary ">
-    
+  <div class="summary com-ocorrencias">
+    <a class="ocorrencias-btn" href="ocorrencias.html" target="_blank">📋 Ocorrências</a>
     <div class="summary-item">
-      <div class="summary-label">Projeção geral</div>
-      <div class="summary-value accent">0,00%</div>
-      <div class="summary-sub">0,00 projetadas / 2.711 meta</div>
+      <div class="summary-label">% de entrega</div>
+      <div class="summary-value accent">100,00%</div>
+      <div class="summary-sub">2.286 instaladas / 2.711 meta</div>
     </div>
     <div class="summary-item">
       <div class="summary-label">Instaladas até o momento</div>
@@ -150,7 +150,7 @@ body{background:#E8E1E3;font-family:'Inter',sans-serif;display:flex;justify-cont
       <div class="summary-sub">de 2.711 · 100,00% da meta total</div>
     </div>
     <div class="summary-item">
-      <div class="summary-label">Falta / Média DU</div>
+      <div class="summary-label">Falta / Média DU realizada</div>
       <div class="summary-value">425</div>
       <div class="summary-sub">média diária de 0,00 unidades</div>
     </div>
@@ -176,7 +176,7 @@ body{background:#E8E1E3;font-family:'Inter',sans-serif;display:flex;justify-cont
       <div class="section-title">Top 3 · Mix de planos</div>
       <div class="section-note-wrap">
         <div class="section-note">POR VOLUME DE VENDAS</div>
-        
+        <a class="ocorrencias-btn planos-essencial-btn" href="planos_essencial.html" target="_blank">📶 Planos Essencial</a>
       </div>
     </div>
     <div class="top-planos-grid">
@@ -213,6 +213,77 @@ body{background:#E8E1E3;font-family:'Inter',sans-serif;display:flex;justify-cont
     </div>
   </div>
   
+  <div class="top-planos regioes-section">
+    <div class="section-intro">
+      <div class="section-title">Forecast × Realizado por região</div>
+      <div class="section-note">MÉDIA POR DIA ÚTIL · % SOBRE O FORECAST DO MÊS</div>
+    </div>
+    <div class="regioes-resumo">
+      <div class="regioes-resumo-destaque">0,00<span class="regioes-resumo-destaque-label">média DU consolidada</span></div>
+      <div class="regioes-resumo-secundario">
+        <span class="pill pill-neu regiao-pill-sm">84,26%</span>
+        <span class="regiao-caption">consolidado geral · 2.286 / 2.713,00 forecast do mês</span>
+      </div>
+    </div>
+    <div class="regioes-grid">
+      
+        <div class="regiao-card">
+          <div class="regiao-nome">Centro-Oeste</div>
+          <div class="regiao-du-destaque">0,00</div>
+          <div class="regiao-du-label">média por dia útil</div>
+          <div class="regiao-secundario">
+            <span class="pill pill-att regiao-pill-sm">57,83%</span>
+            <span class="regiao-caption">277 / 479,00 forecast do mês</span>
+          </div>
+          <div class="bar-track regiao-bar-track">
+            <div class="bar-fill" style="width:38.6%"></div>
+            <div class="bar-marker" style="left:66.7%"></div>
+          </div>
+        </div>
+
+        <div class="regiao-card">
+          <div class="regiao-nome">Minas Gerais</div>
+          <div class="regiao-du-destaque">0,00</div>
+          <div class="regiao-du-label">média por dia útil</div>
+          <div class="regiao-secundario">
+            <span class="pill pill-neu regiao-pill-sm">90,59%</span>
+            <span class="regiao-caption">703 / 776,00 forecast do mês</span>
+          </div>
+          <div class="bar-track regiao-bar-track">
+            <div class="bar-fill" style="width:60.4%"></div>
+            <div class="bar-marker" style="left:66.7%"></div>
+          </div>
+        </div>
+
+        <div class="regiao-card">
+          <div class="regiao-nome">São Paulo</div>
+          <div class="regiao-du-destaque">0,00</div>
+          <div class="regiao-du-label">média por dia útil</div>
+          <div class="regiao-secundario">
+            <span class="pill pill-neu regiao-pill-sm">71,91%</span>
+            <span class="regiao-caption">430 / 598,00 forecast do mês</span>
+          </div>
+          <div class="bar-track regiao-bar-track">
+            <div class="bar-fill" style="width:47.9%"></div>
+            <div class="bar-marker" style="left:66.7%"></div>
+          </div>
+        </div>
+
+        <div class="regiao-card">
+          <div class="regiao-nome">Sul</div>
+          <div class="regiao-du-destaque">0,00</div>
+          <div class="regiao-du-label">média por dia útil</div>
+          <div class="regiao-secundario">
+            <span class="pill pill-pos regiao-pill-sm">101,86%</span>
+            <span class="regiao-caption">876 / 860,00 forecast do mês</span>
+          </div>
+          <div class="bar-track regiao-bar-track">
+            <div class="bar-fill" style="width:67.9%"></div>
+            <div class="bar-marker" style="left:66.7%"></div>
+          </div>
+        </div>
+    </div>
+  </div>
   <div class="body">
     <div class="section-intro">
       <div class="section-title">Desempenho por gestor</div>
@@ -353,7 +424,7 @@ body{background:#E8E1E3;font-family:'Inter',sans-serif;display:flex;justify-cont
     </div>
     <a class="footer-download" href="Dados_Analitico_Vendas.xlsx" download>⬇ Baixar base de dados</a>
     <div class="footer-right">
-      Gerado automaticamente em 01/09/2026 às 11:42 · dados parciais
+      Gerado automaticamente em 01/09/2026 às 12:05 · dados parciais
       <div class="footer-views">👁 <span id="contador-acessos">···</span> visualizações</div>
     </div>
   </div>
@@ -361,7 +432,7 @@ body{background:#E8E1E3;font-family:'Inter',sans-serif;display:flex;justify-cont
 <script>
 (function() {
   var ns = "vero-card-keityguimaraes-netizen";
-  var key = "arquivo-agosto";
+  var key = "geral";
   fetch("https://api.countapi.xyz/hit/" + ns + "/" + key)
     .then(function(r) { return r.json(); })
     .then(function(data) {
