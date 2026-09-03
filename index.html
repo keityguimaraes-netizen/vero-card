@@ -23,16 +23,18 @@ body{background:#E8E1E3;font-family:'Inter',sans-serif;display:flex;justify-cont
 .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.14em;color:#FFC1D8;text-transform:uppercase;text-align:right;}
 .headline{font-family:'Fredoka',sans-serif;font-weight:700;font-size:80px;color:#FFFFFF;line-height:0.95;margin-top:28px;letter-spacing:-0.01em;position:relative;z-index:2;}
 .subline{font-size:16.5px;color:#FFDDE9;margin-top:14px;max-width:560px;line-height:1.5;position:relative;z-index:2;}
-.summary{background:var(--plum);padding:34px 64px 40px;display:flex;gap:0;border-top:1px solid rgba(255,255,255,0.08);position:relative;}
+.summary{background:var(--plum);padding:34px 64px 40px;display:grid;grid-template-columns:repeat(5,1fr);gap:26px 0;border-top:1px solid rgba(255,255,255,0.08);position:relative;}
 .summary.com-ocorrencias{padding-top:56px;}
 .ocorrencias-btn{position:absolute;top:16px;right:64px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;color:#fff;background:rgba(255,255,255,0.14);border:1px solid rgba(255,255,255,0.32);border-radius:20px;padding:8px 14px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:background 0.15s;}
 .ocorrencias-btn:hover{background:rgba(255,255,255,0.28);}
-.summary-item{flex:1;padding-right:28px;}
-.summary-item + .summary-item{border-left:1px solid rgba(255,255,255,0.12);padding-left:28px;}
-.summary-label{font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.1em;text-transform:uppercase;color:#C98FA3;}
-.summary-value{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:34px;color:#FFFFFF;margin-top:6px;}
+.summary-item{padding-right:16px;}
+.summary-item:not(:nth-child(5n)){border-right:1px solid rgba(255,255,255,0.12);}
+.summary-item:nth-child(5n+2),.summary-item:nth-child(5n+3),.summary-item:nth-child(5n+4),.summary-item:nth-child(5n){padding-left:16px;}
+.summary-label{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.05em;text-transform:uppercase;color:#C98FA3;line-height:1.3;}
+.summary-value{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:25px;color:#FFFFFF;margin-top:6px;}
 .summary-value.accent{color:#FF7EA0;}
 .summary-sub{font-size:12.5px;color:#D9A8B8;margin-top:3px;}
+.summary-sub-small{font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#D9A8B8;margin-top:4px;line-height:1.4;}
 .body{padding:48px 64px 20px;}
 .section-intro{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:22px;}
 .section-note-wrap{display:flex;align-items:center;gap:14px;}
@@ -58,7 +60,22 @@ body{background:#E8E1E3;font-family:'Inter',sans-serif;display:flex;justify-cont
 .bar-marker-label{position:absolute;top:-22px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--ink-soft);transform:translateX(-50%);}
 .bar-caption{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);white-space:nowrap;}
 .dealers{display:flex;flex-direction:column;gap:10px;}
-.dealer{display:grid;grid-template-columns:1.15fr 0.6fr 0.68fr 0.58fr 0.68fr 0.68fr 0.68fr 0.58fr 36px;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 14px;}
+.dealer{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;}
+.dealer-head-row{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+.dealer-head-row .dealer-name{flex:1;}
+.dealer-destaque-pill{font-size:12px;padding:5px 10px;white-space:nowrap;}
+.dealer-metrics-grid{display:flex;flex-wrap:wrap;gap:10px;}
+.dealer-metrics-grid .dealer-metric{flex:1 1 100px;min-width:88px;text-align:left;}
+.manager-metrics{display:flex;flex-wrap:wrap;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 14px;margin-top:6px;}
+.manager-metrics .dealer-metric{flex:1 1 100px;min-width:88px;text-align:left;}
+.nivel-toggle{margin-top:14px;}
+.nivel-toggle summary{cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:var(--pink-dark);background:var(--tint);border:1px solid var(--line);border-radius:10px;padding:10px 16px;list-style:none;user-select:none;}
+.nivel-toggle summary::-webkit-details-marker{display:none;}
+.nivel-toggle summary::before{content:"▸ ";}
+.nivel-toggle[open] summary::before{content:"▾ ";}
+.nivel-toggle > div{margin-top:12px;}
+.nivel-toggle-aninhado{margin-top:12px;}
+.nivel-toggle-aninhado summary{background:var(--paper);font-size:11px;padding:8px 14px;}
 .dealer-link{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;background:var(--tint);color:var(--pink-dark);text-decoration:none;font-size:16px;font-weight:700;justify-self:center;transition:background 0.15s, color 0.15s;}
 .dealer-link:hover{background:var(--pink);color:#fff;}
 .dealer-name{font-size:13.5px;font-weight:600;color:var(--ink);}
@@ -139,35 +156,56 @@ body{background:#E8E1E3;font-family:'Inter',sans-serif;display:flex;justify-cont
 
   <div class="summary com-ocorrencias">
     <a class="ocorrencias-btn" href="ocorrencias.html" target="_blank">📋 Ocorrências</a>
+    
     <div class="summary-item">
-      <div class="summary-label">Projeção geral</div>
-      <div class="summary-value accent">0,00%</div>
-      <div class="summary-sub">0,00 projetadas / 2.711 meta</div>
+      <div class="summary-label">Venda bruta</div>
+      <div class="summary-value">220</div>
+      <div class="summary-sub-small">Média DU: 110,00</div>
     </div>
     <div class="summary-item">
-      <div class="summary-label">Instaladas até o momento</div>
-      <div class="summary-value">2.286</div>
-      <div class="summary-sub">de 2.711 · 100,00% da meta total</div>
+      <div class="summary-label">Venda líquida</div>
+      <div class="summary-value">205</div>
+      <div class="summary-sub-small">Média DU: 102,50</div>
     </div>
     <div class="summary-item">
-      <div class="summary-label">Falta / Média DU</div>
-      <div class="summary-value">425</div>
-      <div class="summary-sub">média diária de 0,00 unidades</div>
+      <div class="summary-label">Venda instalada</div>
+      <div class="summary-value">176</div>
+      <div class="summary-sub-small">Média DU: 88,00 · 7,68% da meta</div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-label">Projeção</div>
+      <div class="summary-value">1.641</div>
+      <div class="summary-sub-small">71,57% de atingimento</div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-label">Venda cancelada total</div>
+      <div class="summary-value">-15</div>
+      
+    </div>
+    <div class="summary-item">
+      <div class="summary-label">% cancelamento total</div>
+      <div class="summary-value">-0,08%</div>
+      
+    </div>
+    <div class="summary-item">
+      <div class="summary-label">CRM instal</div>
+      <div class="summary-value">27,74%</div>
+      
     </div>
     <div class="summary-item">
       <div class="summary-label">Recorrência</div>
-      <div class="summary-value">17,45%</div>
-      <div class="summary-sub">base ativa recorrente</div>
+      <div class="summary-value">1,64%</div>
+      
     </div>
     <div class="summary-item">
-      <div class="summary-label">Cancelamento comercial</div>
-      <div class="summary-value">8,66%</div>
-      <div class="summary-sub">222 cancelamentos</div>
+      <div class="summary-label">Bruta móvel</div>
+      <div class="summary-value">—</div>
+      
     </div>
     <div class="summary-item">
-      <div class="summary-label">Ticket médio</div>
-      <div class="summary-value">R$ 129,52</div>
-      <div class="summary-sub">consolidado, ponderado por instaladas</div>
+      <div class="summary-label">Ativações móvel</div>
+      <div class="summary-value">—</div>
+      
     </div>
   </div>
   
@@ -185,30 +223,30 @@ body{background:#E8E1E3;font-family:'Inter',sans-serif;display:flex;justify-cont
           <div class="plano-rank">1º</div>
           <div class="plano-nome">VERO FAST 700MB</div>
           <div class="plano-stats">
-            <span class="plano-count">269</span>
+            <span class="plano-count">16</span>
             <span class="plano-count-label">vendas</span>
           </div>
-          <div class="plano-pct">11,77% do mix de planos</div>
+          <div class="plano-pct">11,51% do mix de planos</div>
         </div>
 
         <div class="plano-card">
           <div class="plano-rank">2º</div>
-          <div class="plano-nome">VERO FAST 700MB</div>
+          <div class="plano-nome">VERO FAST 550MB</div>
           <div class="plano-stats">
-            <span class="plano-count">189</span>
+            <span class="plano-count">13</span>
             <span class="plano-count-label">vendas</span>
           </div>
-          <div class="plano-pct">8,27% do mix de planos</div>
+          <div class="plano-pct">9,35% do mix de planos</div>
         </div>
 
         <div class="plano-card">
           <div class="plano-rank">3º</div>
           <div class="plano-nome">VERO FAST 550MB</div>
           <div class="plano-stats">
-            <span class="plano-count">188</span>
+            <span class="plano-count">12</span>
             <span class="plano-count-label">vendas</span>
           </div>
-          <div class="plano-pct">8,22% do mix de planos</div>
+          <div class="plano-pct">8,63% do mix de planos</div>
         </div>
     </div>
   </div>
@@ -219,66 +257,66 @@ body{background:#E8E1E3;font-family:'Inter',sans-serif;display:flex;justify-cont
       <div class="section-note">MÉDIA POR DIA ÚTIL · % SOBRE O FORECAST DO MÊS</div>
     </div>
     <div class="regioes-resumo">
-      <div class="regioes-resumo-destaque">0,00<span class="regioes-resumo-destaque-label">média DU consolidada</span></div>
+      <div class="regioes-resumo-destaque">69,50<span class="regioes-resumo-destaque-label">média DU consolidada</span></div>
       <div class="regioes-resumo-secundario">
-        <span class="pill pill-neu regiao-pill-sm">84,26%</span>
-        <span class="regiao-caption">consolidado geral · 2.286 / 2.713,00 forecast do mês</span>
+        <span class="pill pill-att regiao-pill-sm">5,12%</span>
+        <span class="regiao-caption">consolidado geral · 139 / 2.713,00 forecast do mês</span>
       </div>
     </div>
     <div class="regioes-grid">
       
         <div class="regiao-card">
           <div class="regiao-nome">Centro-Oeste</div>
-          <div class="regiao-du-destaque">0,00</div>
+          <div class="regiao-du-destaque">5,50</div>
           <div class="regiao-du-label">média por dia útil</div>
           <div class="regiao-secundario">
-            <span class="pill pill-att regiao-pill-sm">57,83%</span>
-            <span class="regiao-caption">277 / 479,00 forecast do mês</span>
+            <span class="pill pill-att regiao-pill-sm">2,30%</span>
+            <span class="regiao-caption">11 / 479,00 forecast do mês</span>
           </div>
           <div class="bar-track regiao-bar-track">
-            <div class="bar-fill" style="width:38.6%"></div>
+            <div class="bar-fill" style="width:1.5%"></div>
             <div class="bar-marker" style="left:66.7%"></div>
           </div>
         </div>
 
         <div class="regiao-card">
           <div class="regiao-nome">Minas Gerais</div>
-          <div class="regiao-du-destaque">0,00</div>
+          <div class="regiao-du-destaque">23,00</div>
           <div class="regiao-du-label">média por dia útil</div>
           <div class="regiao-secundario">
-            <span class="pill pill-neu regiao-pill-sm">90,59%</span>
-            <span class="regiao-caption">703 / 776,00 forecast do mês</span>
+            <span class="pill pill-att regiao-pill-sm">5,93%</span>
+            <span class="regiao-caption">46 / 776,00 forecast do mês</span>
           </div>
           <div class="bar-track regiao-bar-track">
-            <div class="bar-fill" style="width:60.4%"></div>
+            <div class="bar-fill" style="width:4.0%"></div>
             <div class="bar-marker" style="left:66.7%"></div>
           </div>
         </div>
 
         <div class="regiao-card">
           <div class="regiao-nome">São Paulo</div>
-          <div class="regiao-du-destaque">0,00</div>
+          <div class="regiao-du-destaque">11,50</div>
           <div class="regiao-du-label">média por dia útil</div>
           <div class="regiao-secundario">
-            <span class="pill pill-neu regiao-pill-sm">71,91%</span>
-            <span class="regiao-caption">430 / 598,00 forecast do mês</span>
+            <span class="pill pill-att regiao-pill-sm">3,85%</span>
+            <span class="regiao-caption">23 / 598,00 forecast do mês</span>
           </div>
           <div class="bar-track regiao-bar-track">
-            <div class="bar-fill" style="width:47.9%"></div>
+            <div class="bar-fill" style="width:2.6%"></div>
             <div class="bar-marker" style="left:66.7%"></div>
           </div>
         </div>
 
         <div class="regiao-card">
           <div class="regiao-nome">Sul</div>
-          <div class="regiao-du-destaque">0,00</div>
+          <div class="regiao-du-destaque">29,50</div>
           <div class="regiao-du-label">média por dia útil</div>
           <div class="regiao-secundario">
-            <span class="pill pill-pos regiao-pill-sm">101,86%</span>
-            <span class="regiao-caption">876 / 860,00 forecast do mês</span>
+            <span class="pill pill-att regiao-pill-sm">6,86%</span>
+            <span class="regiao-caption">59 / 860,00 forecast do mês</span>
           </div>
           <div class="bar-track regiao-bar-track">
-            <div class="bar-fill" style="width:67.9%"></div>
+            <div class="bar-fill" style="width:4.6%"></div>
             <div class="bar-marker" style="left:66.7%"></div>
           </div>
         </div>
@@ -297,56 +335,55 @@ body{background:#E8E1E3;font-family:'Inter',sans-serif;display:flex;justify-cont
           <div class="manager-name">EMANUELLE CRISTINE CARDOSO CUNHA PIRES DOS SANTOS</div>
         </div>
         <div class="manager-proj">
-          <div class="manager-proj-value tag-att">0,00%</div>
+          <div class="manager-proj-value tag-neu">56,78%</div>
           <div class="manager-proj-label">projeção de entrega</div>
         </div>
       </div>
       <div class="bar-row">
         <div class="bar-track">
-          <div class="bar-fill" style="width:0.0%"></div>
+          <div class="bar-fill" style="width:37.9%"></div>
           <div class="bar-marker" style="left:66.7%"></div>
           <div class="bar-marker-label" style="left:66.7%">100%</div>
         </div>
-        <div class="bar-caption">1.600 / 2.019 instaladas · falta 419</div>
+        <div class="bar-caption">116 / 1.675 instaladas · falta 1.559</div>
       </div>
-      <div class="dealers">
-        
-        <div class="dealer">
-          <div class="dealer-name">WEBDEALER CONECTAMAIS LP<span>Meta 323</span></div>
-          <div class="dealer-metric"><div class="dealer-metric-value">48</div><div class="dealer-metric-label">vendas instaladas</div></div>
-          <div class="dealer-metric"><div class="dealer-metric-value">R$ 133,72</div><div class="dealer-metric-label">ticket médio</div></div>
-          <div class="dealer-metric"><div class="dealer-metric-value">0,00</div><div class="dealer-metric-label">média DU</div></div>
-          <div class="dealer-metric"><span class="pill pill-att">0,00%</span><div class="dealer-metric-label">projeção</div></div>
-          <div class="dealer-metric"><span class="pill pill-neu">—</span><div class="dealer-metric-label">crm instal</div></div>
-          <div class="dealer-metric"><span class="pill pill-att">33,33%</span><div class="dealer-metric-label">cancelamento</div></div>
-          <div class="dealer-metric"><div class="dealer-metric-value">4,17%</div><div class="dealer-metric-label">recorrência</div></div>
-          <a class="dealer-link" href="parceiros/webdealer-conectamais-lp.html" target="_blank" title="Ver card de WEBDEALER CONECTAMAIS LP">↗</a>
+      <div class="manager-metrics"><div class="dealer-metric"><div class="dealer-metric-value">1.675</div><div class="dealer-metric-label">meta</div></div><div class="dealer-metric"><div class="dealer-metric-value">175</div><div class="dealer-metric-label">venda bruta</div></div><div class="dealer-metric"><div class="dealer-metric-value">165</div><div class="dealer-metric-label">venda líquida</div></div><div class="dealer-metric"><div class="dealer-metric-value">116</div><div class="dealer-metric-label">venda instalada</div></div><div class="dealer-metric"><div class="dealer-metric-value">6,93%</div><div class="dealer-metric-label">% atingimento</div></div><div class="dealer-metric"><div class="dealer-metric-value">-0,06%</div><div class="dealer-metric-label">% cancelamento total</div></div><div class="dealer-metric"><div class="dealer-metric-value">4,18%</div><div class="dealer-metric-label">% cancelamento comercial</div></div><div class="dealer-metric"><div class="dealer-metric-value">25,86%</div><div class="dealer-metric-label">crm instal</div></div><div class="dealer-metric"><div class="dealer-metric-value">1,54%</div><div class="dealer-metric-label">recorrência</div></div><div class="dealer-metric"><div class="dealer-metric-value">—</div><div class="dealer-metric-label">ativações móvel</div></div>
+      </div>
+      <details class="nivel-toggle nivel-toggle-aninhado">
+        <summary>Ver canais (3)</summary>
+        <div class="dealers">
+          
+        <div class="dealer dealer-full">
+          <div class="dealer-head-row">
+            <div class="dealer-name">WEBDEALER CORP</div>
+            <span class="pill pill-att dealer-destaque-pill">4,75% atingimento</span>
+            <a class="dealer-link" href="parceiros/webdealer-corp.html" target="_blank" title="Ver card de WEBDEALER CORP">↗</a>
+          </div>
+          <div class="dealer-metrics-grid"><div class="dealer-metric"><div class="dealer-metric-value">295</div><div class="dealer-metric-label">meta</div></div><div class="dealer-metric"><div class="dealer-metric-value">32</div><div class="dealer-metric-label">venda bruta</div></div><div class="dealer-metric"><div class="dealer-metric-value">31</div><div class="dealer-metric-label">venda líquida</div></div><div class="dealer-metric"><div class="dealer-metric-value">14</div><div class="dealer-metric-label">venda instalada</div></div><div class="dealer-metric"><div class="dealer-metric-value">4,75%</div><div class="dealer-metric-label">% atingimento</div></div><div class="dealer-metric"><div class="dealer-metric-value">-0,03%</div><div class="dealer-metric-label">% cancelamento total</div></div><div class="dealer-metric"><div class="dealer-metric-value">—</div><div class="dealer-metric-label">% cancelamento comercial</div></div><div class="dealer-metric"><div class="dealer-metric-value">21,43%</div><div class="dealer-metric-label">crm instal</div></div><div class="dealer-metric"><div class="dealer-metric-value">—</div><div class="dealer-metric-label">recorrência</div></div><div class="dealer-metric"><div class="dealer-metric-value">—</div><div class="dealer-metric-label">ativações móvel</div></div>
+          </div>
         </div>
 
-        <div class="dealer">
-          <div class="dealer-name">WEBDEALER CORP<span>Meta 214</span></div>
-          <div class="dealer-metric"><div class="dealer-metric-value">275</div><div class="dealer-metric-label">vendas instaladas</div></div>
-          <div class="dealer-metric"><div class="dealer-metric-value">R$ 132,27</div><div class="dealer-metric-label">ticket médio</div></div>
-          <div class="dealer-metric"><div class="dealer-metric-value">0,00</div><div class="dealer-metric-label">média DU</div></div>
-          <div class="dealer-metric"><span class="pill pill-att">0,00%</span><div class="dealer-metric-label">projeção</div></div>
-          <div class="dealer-metric"><span class="pill pill-att">6,18%</span><div class="dealer-metric-label">crm instal</div></div>
-          <div class="dealer-metric"><span class="pill pill-pos">3,36%</span><div class="dealer-metric-label">cancelamento</div></div>
-          <div class="dealer-metric"><div class="dealer-metric-value">24,36%</div><div class="dealer-metric-label">recorrência</div></div>
-          <a class="dealer-link" href="parceiros/webdealer-corp.html" target="_blank" title="Ver card de WEBDEALER CORP">↗</a>
+        <div class="dealer dealer-full">
+          <div class="dealer-head-row">
+            <div class="dealer-name">WEBDEALER LOGMAIS</div>
+            <span class="pill pill-att dealer-destaque-pill">4,71% atingimento</span>
+            <a class="dealer-link" href="parceiros/webdealer-logmais.html" target="_blank" title="Ver card de WEBDEALER LOGMAIS">↗</a>
+          </div>
+          <div class="dealer-metrics-grid"><div class="dealer-metric"><div class="dealer-metric-value">1.380</div><div class="dealer-metric-label">meta</div></div><div class="dealer-metric"><div class="dealer-metric-value">90</div><div class="dealer-metric-label">venda bruta</div></div><div class="dealer-metric"><div class="dealer-metric-value">84</div><div class="dealer-metric-label">venda líquida</div></div><div class="dealer-metric"><div class="dealer-metric-value">65</div><div class="dealer-metric-label">venda instalada</div></div><div class="dealer-metric"><div class="dealer-metric-value">4,71%</div><div class="dealer-metric-label">% atingimento</div></div><div class="dealer-metric"><div class="dealer-metric-value">-0,07%</div><div class="dealer-metric-label">% cancelamento total</div></div><div class="dealer-metric"><div class="dealer-metric-value">3,33%</div><div class="dealer-metric-label">% cancelamento comercial</div></div><div class="dealer-metric"><div class="dealer-metric-value">6,15%</div><div class="dealer-metric-label">crm instal</div></div><div class="dealer-metric"><div class="dealer-metric-value">1,54%</div><div class="dealer-metric-label">recorrência</div></div><div class="dealer-metric"><div class="dealer-metric-value">—</div><div class="dealer-metric-label">ativações móvel</div></div>
+          </div>
         </div>
 
-        <div class="dealer">
-          <div class="dealer-name">WEBDEALER LOGMAIS<span>Meta 1.482</span></div>
-          <div class="dealer-metric"><div class="dealer-metric-value">1.277</div><div class="dealer-metric-label">vendas instaladas</div></div>
-          <div class="dealer-metric"><div class="dealer-metric-value">R$ 128,18</div><div class="dealer-metric-label">ticket médio</div></div>
-          <div class="dealer-metric"><div class="dealer-metric-value">0,00</div><div class="dealer-metric-label">média DU</div></div>
-          <div class="dealer-metric"><span class="pill pill-att">0,00%</span><div class="dealer-metric-label">projeção</div></div>
-          <div class="dealer-metric"><span class="pill pill-att">24,59%</span><div class="dealer-metric-label">crm instal</div></div>
-          <div class="dealer-metric"><span class="pill pill-neu">7,71%</span><div class="dealer-metric-label">cancelamento</div></div>
-          <div class="dealer-metric"><div class="dealer-metric-value">16,91%</div><div class="dealer-metric-label">recorrência</div></div>
-          <a class="dealer-link" href="parceiros/webdealer-logmais.html" target="_blank" title="Ver card de WEBDEALER LOGMAIS">↗</a>
+        <div class="dealer dealer-full">
+          <div class="dealer-head-row">
+            <div class="dealer-name">WEBMAIS</div>
+            <span class="pill pill-att dealer-destaque-pill">0,00% atingimento</span>
+            <a class="dealer-link" href="parceiros/webmais.html" target="_blank" title="Ver card de WEBMAIS">↗</a>
+          </div>
+          <div class="dealer-metrics-grid"><div class="dealer-metric"><div class="dealer-metric-value">0</div><div class="dealer-metric-label">meta</div></div><div class="dealer-metric"><div class="dealer-metric-value">53</div><div class="dealer-metric-label">venda bruta</div></div><div class="dealer-metric"><div class="dealer-metric-value">50</div><div class="dealer-metric-label">venda líquida</div></div><div class="dealer-metric"><div class="dealer-metric-value">37</div><div class="dealer-metric-label">venda instalada</div></div><div class="dealer-metric"><div class="dealer-metric-value">0,00%</div><div class="dealer-metric-label">% atingimento</div></div><div class="dealer-metric"><div class="dealer-metric-value">-0,06%</div><div class="dealer-metric-label">% cancelamento total</div></div><div class="dealer-metric"><div class="dealer-metric-value">5,66%</div><div class="dealer-metric-label">% cancelamento comercial</div></div><div class="dealer-metric"><div class="dealer-metric-value">62,16%</div><div class="dealer-metric-label">crm instal</div></div><div class="dealer-metric"><div class="dealer-metric-value">—</div><div class="dealer-metric-label">recorrência</div></div><div class="dealer-metric"><div class="dealer-metric-value">—</div><div class="dealer-metric-label">ativações móvel</div></div>
+          </div>
         </div>
-      </div>
+        </div>
+      </details>
     </div>
 
     <div class="manager">
@@ -356,44 +393,55 @@ body{background:#E8E1E3;font-family:'Inter',sans-serif;display:flex;justify-cont
           <div class="manager-name">TADEU LEITE VITORIANO</div>
         </div>
         <div class="manager-proj">
-          <div class="manager-proj-value tag-att">0,00%</div>
+          <div class="manager-proj-value tag-pos">111,65%</div>
           <div class="manager-proj-label">projeção de entrega</div>
         </div>
       </div>
       <div class="bar-row">
         <div class="bar-track">
-          <div class="bar-fill" style="width:0.0%"></div>
+          <div class="bar-fill" style="width:74.4%"></div>
           <div class="bar-marker" style="left:66.7%"></div>
           <div class="bar-marker-label" style="left:66.7%">100%</div>
         </div>
-        <div class="bar-caption">686 / 692 instaladas · falta 6</div>
+        <div class="bar-caption">60 / 618 instaladas · falta 558</div>
       </div>
-      <div class="dealers">
-        
-        <div class="dealer">
-          <div class="dealer-name">MIDIA SIMPLES<span>Meta 572</span></div>
-          <div class="dealer-metric"><div class="dealer-metric-value">629</div><div class="dealer-metric-label">vendas instaladas</div></div>
-          <div class="dealer-metric"><div class="dealer-metric-value">R$ 131,41</div><div class="dealer-metric-label">ticket médio</div></div>
-          <div class="dealer-metric"><div class="dealer-metric-value">0,00</div><div class="dealer-metric-label">média DU</div></div>
-          <div class="dealer-metric"><span class="pill pill-att">0,00%</span><div class="dealer-metric-label">projeção</div></div>
-          <div class="dealer-metric"><span class="pill pill-att">23,85%</span><div class="dealer-metric-label">crm instal</div></div>
-          <div class="dealer-metric"><span class="pill pill-att">11,00%</span><div class="dealer-metric-label">cancelamento</div></div>
-          <div class="dealer-metric"><div class="dealer-metric-value">17,65%</div><div class="dealer-metric-label">recorrência</div></div>
-          <a class="dealer-link" href="parceiros/midia-simples.html" target="_blank" title="Ver card de MIDIA SIMPLES">↗</a>
+      <div class="manager-metrics"><div class="dealer-metric"><div class="dealer-metric-value">618</div><div class="dealer-metric-label">meta</div></div><div class="dealer-metric"><div class="dealer-metric-value">45</div><div class="dealer-metric-label">venda bruta</div></div><div class="dealer-metric"><div class="dealer-metric-value">40</div><div class="dealer-metric-label">venda líquida</div></div><div class="dealer-metric"><div class="dealer-metric-value">60</div><div class="dealer-metric-label">venda instalada</div></div><div class="dealer-metric"><div class="dealer-metric-value">9,71%</div><div class="dealer-metric-label">% atingimento</div></div><div class="dealer-metric"><div class="dealer-metric-value">-0,12%</div><div class="dealer-metric-label">% cancelamento total</div></div><div class="dealer-metric"><div class="dealer-metric-value">4,76%</div><div class="dealer-metric-label">% cancelamento comercial</div></div><div class="dealer-metric"><div class="dealer-metric-value">31,58%</div><div class="dealer-metric-label">crm instal</div></div><div class="dealer-metric"><div class="dealer-metric-value">1,75%</div><div class="dealer-metric-label">recorrência</div></div><div class="dealer-metric"><div class="dealer-metric-value">—</div><div class="dealer-metric-label">ativações móvel</div></div>
+      </div>
+      <details class="nivel-toggle nivel-toggle-aninhado">
+        <summary>Ver canais (3)</summary>
+        <div class="dealers">
+          
+        <div class="dealer dealer-full">
+          <div class="dealer-head-row">
+            <div class="dealer-name">MIDIA SIMPLES</div>
+            <span class="pill pill-att dealer-destaque-pill">9,22% atingimento</span>
+            <a class="dealer-link" href="parceiros/midia-simples.html" target="_blank" title="Ver card de MIDIA SIMPLES">↗</a>
+          </div>
+          <div class="dealer-metrics-grid"><div class="dealer-metric"><div class="dealer-metric-value">618</div><div class="dealer-metric-label">meta</div></div><div class="dealer-metric"><div class="dealer-metric-value">42</div><div class="dealer-metric-label">venda bruta</div></div><div class="dealer-metric"><div class="dealer-metric-value">37</div><div class="dealer-metric-label">venda líquida</div></div><div class="dealer-metric"><div class="dealer-metric-value">57</div><div class="dealer-metric-label">venda instalada</div></div><div class="dealer-metric"><div class="dealer-metric-value">9,22%</div><div class="dealer-metric-label">% atingimento</div></div><div class="dealer-metric"><div class="dealer-metric-value">-0,12%</div><div class="dealer-metric-label">% cancelamento total</div></div><div class="dealer-metric"><div class="dealer-metric-value">4,76%</div><div class="dealer-metric-label">% cancelamento comercial</div></div><div class="dealer-metric"><div class="dealer-metric-value">31,58%</div><div class="dealer-metric-label">crm instal</div></div><div class="dealer-metric"><div class="dealer-metric-value">1,75%</div><div class="dealer-metric-label">recorrência</div></div><div class="dealer-metric"><div class="dealer-metric-value">—</div><div class="dealer-metric-label">ativações móvel</div></div>
+          </div>
         </div>
 
-        <div class="dealer">
-          <div class="dealer-name">WEBDEALER MUNDIALE TEC<span>Meta 120</span></div>
-          <div class="dealer-metric"><div class="dealer-metric-value">57</div><div class="dealer-metric-label">vendas instaladas</div></div>
-          <div class="dealer-metric"><div class="dealer-metric-value">R$ 121,73</div><div class="dealer-metric-label">ticket médio</div></div>
-          <div class="dealer-metric"><div class="dealer-metric-value">0,00</div><div class="dealer-metric-label">média DU</div></div>
-          <div class="dealer-metric"><span class="pill pill-att">0,00%</span><div class="dealer-metric-label">projeção</div></div>
-          <div class="dealer-metric"><span class="pill pill-att">5,26%</span><div class="dealer-metric-label">crm instal</div></div>
-          <div class="dealer-metric"><span class="pill pill-neu">8,82%</span><div class="dealer-metric-label">cancelamento</div></div>
-          <div class="dealer-metric"><div class="dealer-metric-value">5,26%</div><div class="dealer-metric-label">recorrência</div></div>
-          <a class="dealer-link" href="parceiros/webdealer-mundiale-tec.html" target="_blank" title="Ver card de WEBDEALER MUNDIALE TEC">↗</a>
+        <div class="dealer dealer-full">
+          <div class="dealer-head-row">
+            <div class="dealer-name">TECH PERFORMANCE</div>
+            <span class="pill pill-att dealer-destaque-pill">0,00% atingimento</span>
+            <a class="dealer-link" href="parceiros/tech-performance.html" target="_blank" title="Ver card de TECH PERFORMANCE">↗</a>
+          </div>
+          <div class="dealer-metrics-grid"><div class="dealer-metric"><div class="dealer-metric-value">0</div><div class="dealer-metric-label">meta</div></div><div class="dealer-metric"><div class="dealer-metric-value">—</div><div class="dealer-metric-label">venda bruta</div></div><div class="dealer-metric"><div class="dealer-metric-value">—</div><div class="dealer-metric-label">venda líquida</div></div><div class="dealer-metric"><div class="dealer-metric-value">0</div><div class="dealer-metric-label">venda instalada</div></div><div class="dealer-metric"><div class="dealer-metric-value">0,00%</div><div class="dealer-metric-label">% atingimento</div></div><div class="dealer-metric"><div class="dealer-metric-value">—</div><div class="dealer-metric-label">% cancelamento total</div></div><div class="dealer-metric"><div class="dealer-metric-value">—</div><div class="dealer-metric-label">% cancelamento comercial</div></div><div class="dealer-metric"><div class="dealer-metric-value">—</div><div class="dealer-metric-label">crm instal</div></div><div class="dealer-metric"><div class="dealer-metric-value">—</div><div class="dealer-metric-label">recorrência</div></div><div class="dealer-metric"><div class="dealer-metric-value">—</div><div class="dealer-metric-label">ativações móvel</div></div>
+          </div>
         </div>
-      </div>
+
+        <div class="dealer dealer-full">
+          <div class="dealer-head-row">
+            <div class="dealer-name">WEBDEALER MUNDIALE TEC</div>
+            <span class="pill pill-att dealer-destaque-pill">0,00% atingimento</span>
+            <a class="dealer-link" href="parceiros/webdealer-mundiale-tec.html" target="_blank" title="Ver card de WEBDEALER MUNDIALE TEC">↗</a>
+          </div>
+          <div class="dealer-metrics-grid"><div class="dealer-metric"><div class="dealer-metric-value">0</div><div class="dealer-metric-label">meta</div></div><div class="dealer-metric"><div class="dealer-metric-value">3</div><div class="dealer-metric-label">venda bruta</div></div><div class="dealer-metric"><div class="dealer-metric-value">3</div><div class="dealer-metric-label">venda líquida</div></div><div class="dealer-metric"><div class="dealer-metric-value">3</div><div class="dealer-metric-label">venda instalada</div></div><div class="dealer-metric"><div class="dealer-metric-value">0,00%</div><div class="dealer-metric-label">% atingimento</div></div><div class="dealer-metric"><div class="dealer-metric-value">—</div><div class="dealer-metric-label">% cancelamento total</div></div><div class="dealer-metric"><div class="dealer-metric-value">—</div><div class="dealer-metric-label">% cancelamento comercial</div></div><div class="dealer-metric"><div class="dealer-metric-value">—</div><div class="dealer-metric-label">crm instal</div></div><div class="dealer-metric"><div class="dealer-metric-value">—</div><div class="dealer-metric-label">recorrência</div></div><div class="dealer-metric"><div class="dealer-metric-value">—</div><div class="dealer-metric-label">ativações móvel</div></div>
+          </div>
+        </div>
+        </div>
+      </details>
     </div>
   </div>
 
@@ -405,13 +453,13 @@ body{background:#E8E1E3;font-family:'Inter',sans-serif;display:flex;justify-cont
       <div class="total-caption">consolidado geral · agosto</div>
     </div>
     <div class="total-numbers">
-      <div class="total-num"><div class="total-num-value">2.711</div><div class="total-num-label">meta</div></div>
-      <div class="total-num"><div class="total-num-value">2.286</div><div class="total-num-label">instaladas</div></div>
-      <div class="total-num"><div class="total-num-value">425</div><div class="total-num-label">falta</div></div>
-      <div class="total-num"><div class="total-num-value" style="color:#FF7EA0">0,00%</div><div class="total-num-label">projeção</div></div>
-      <div class="total-num"><div class="total-num-value">17,45%</div><div class="total-num-label">recorrência</div></div>
-      <div class="total-num"><div class="total-num-value">8,66%</div><div class="total-num-label">cancelamento</div></div>
-      <div class="total-num"><div class="total-num-value">R$ 129,52</div><div class="total-num-label">ticket médio</div></div>
+      <div class="total-num"><div class="total-num-value">2.293</div><div class="total-num-label">meta</div></div>
+      <div class="total-num"><div class="total-num-value">176</div><div class="total-num-label">instaladas</div></div>
+      <div class="total-num"><div class="total-num-value">2.117</div><div class="total-num-label">falta</div></div>
+      <div class="total-num"><div class="total-num-value" style="color:#FF7EA0">71,57%</div><div class="total-num-label">projeção</div></div>
+      <div class="total-num"><div class="total-num-value">1,64%</div><div class="total-num-label">recorrência</div></div>
+      <div class="total-num"><div class="total-num-value">4,38%</div><div class="total-num-label">cancelamento</div></div>
+      <div class="total-num"><div class="total-num-value">R$ 130,33</div><div class="total-num-label">ticket médio</div></div>
     </div>
   </div>
 
@@ -424,7 +472,7 @@ body{background:#E8E1E3;font-family:'Inter',sans-serif;display:flex;justify-cont
     </div>
     <a class="footer-download" href="Dados_Analitico_Vendas.xlsx" download>⬇ Baixar base de dados</a>
     <div class="footer-right">
-      Gerado automaticamente em 01/09/2026 às 11:18 · dados parciais
+      Gerado automaticamente em 03/09/2026 às 15:36 · dados parciais
       <div class="footer-views">👁 <span id="contador-acessos">···</span> visualizações</div>
     </div>
   </div>
